@@ -1,24 +1,84 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column           | Type   | Options                        |
+| ---------------- | ------ | ------------------------------ |
+| nickname         | string | null: false                    |
+| email            | string | null: false, foreign_key: true |
+| password         | string | null: false                    |
+| family_name      | string | null: false                    |
+| first_name       | string | null: false                    |
+| family_name_kana | string | null: false                    |
+| first_name_kana  | string | null: false                    |
+| birth_day        | date   | null: false                    |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :products
+- has_many :purchases
 
-* Configuration
+## products テーブル
 
-* Database creation
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| user            | references | null: false, foreign_key: true |
+| name            | string     | null: false                    |
+| description     | text       | null: false                    |
+| price           | integer    | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| delivery_fee    | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| preparation_day | integer    | null: false                    |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many   :images
+- belongs_to :user
+- has_one    :purchases
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_fee
+- belongs_to_active_hash :preparation_day
+- belongs_to_active_hash :prefecture
 
-* Services (job queues, cache servers, search engines, etc.)
+## images テーブル
 
-* Deployment instructions
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| product | references | null: false, foreign_key: true |
+| image   | string     | null: false                    |
 
-* ...
+### Association
+
+- belongs_to :product
+
+## purchases テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| room   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :product
+
+## shipping_addresses テーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| purchase      | references | null: false, foreign_key: true |
+| post_code     | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | integer    | null: false, unique:true       |
+
+### Association
+
+- belongs_to :purchase
+- belongs_to_active_hash :prefecture
