@@ -34,32 +34,20 @@
 
 ### Association
 
-- has_many   :images
 - belongs_to :user
-- has_one    :purchases
+- has_one    :purchase
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
 - belongs_to_active_hash :delivery_fee
 - belongs_to_active_hash :preparation_day
 - belongs_to_active_hash :prefecture
 
-## images テーブル
+## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | product | references | null: false, foreign_key: true |
-| image   | string     | null: false                    |
-
-### Association
-
-- belongs_to :product
-
-## purchases テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -71,12 +59,12 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | purchase      | references | null: false, foreign_key: true |
-| post_code     | integer    | null: false                    |
+| post_code     | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
-| phone_number  | integer    | null: false, unique:true       |
+| phone_number  | string     | null: false, unique:true       |
 
 ### Association
 
