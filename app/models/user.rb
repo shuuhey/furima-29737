@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   validates :nickname, presence: true
-  validates :email, presence: true, uniqueness: true,
+  validates :email, presence: true, uniqueness: { case_sensitive: true },
   inclusion: { in: %w(@) }
   # パスワード2回入力はdeviseの基本バリデーション
   validates :encrypted_password, presence: true,
