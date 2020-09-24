@@ -87,12 +87,12 @@ describe User do
       it 'family_name_kanaとfirst_name_kanaは全角（カタカナ）でなければ登録できない' do
         @user.family_name_kana = 'ひらがな'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+        expect(@user.errors.full_messages).to include("Family name kana is invalid")
       end
       it 'first_name_kanaは全角（カタカナ）でなければ登録できない' do
         @user.first_name_kana = 'ひらがな'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana can't be blank")
+        expect(@user.errors.full_messages).to include("First name kana is invalid")
       end
       it 'birth_dayが存在しないと登録できない' do
         @user.birth_day = ''
