@@ -49,6 +49,11 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it 'passwordは半角英数字混合でなければ登録できない' do
+        @user.password = 'abcdef'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
       it 'passwordは確認用を含めて2回入力しないと登録できない' do
         @user.password_confirmation = ''
         @user.valid?
@@ -87,12 +92,12 @@ describe User do
       it 'family_name_kanaとfirst_name_kanaは全角（カタカナ）でなければ登録できない' do
         @user.family_name_kana = 'ひらがな'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Family name kana is invalid")
+        expect(@user.errors.full_messages).to include('Family name kana is invalid')
       end
       it 'first_name_kanaは全角（カタカナ）でなければ登録できない' do
         @user.first_name_kana = 'ひらがな'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana is invalid")
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
       it 'birth_dayが存在しないと登録できない' do
         @user.birth_day = ''
