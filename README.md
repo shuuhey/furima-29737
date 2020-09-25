@@ -28,9 +28,9 @@
 | price           | integer    | null: false                    |
 | category_id     | integer    | null: false                    |
 | condition_id    | integer    | null: false                    |
-| delivery_fee    | integer    | null: false                    |
+| delivery_id     | integer    | null: false                    |
 | prefecture_id   | integer    | null: false                    |
-| preparation_day | integer    | null: false                    |
+| preparation_id  | integer    | null: false                    |
 
 ### Association
 
@@ -38,8 +38,8 @@
 - has_one    :order
 - belongs_to_active_hash :category
 - belongs_to_active_hash :condition
-- belongs_to_active_hash :delivery_fee
-- belongs_to_active_hash :preparation_day
+- belongs_to_active_hash :delivery
+- belongs_to_active_hash :preparation
 - belongs_to_active_hash :prefecture
 
 ## order テーブル
