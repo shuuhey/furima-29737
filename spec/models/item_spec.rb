@@ -30,27 +30,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'カテゴリーが選択されていないと登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category is invalid')
       end
       it '商品の状態が選択されていないと登録できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Condition is invalid')
       end
       it '配送料について選択されていないと登録できない' do
-        @item.delivery_id = '1'
+        @item.delivery_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Delivery is invalid')
       end
       it '発送元の地域が選択されていないと登録できない' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture is invalid')
       end
       it '発送までの日数が選択されていないと登録できない' do
-        @item.preparation_id = '1'
+        @item.preparation_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Preparation is invalid')
       end
