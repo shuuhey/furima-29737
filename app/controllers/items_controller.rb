@@ -51,6 +51,8 @@ class ItemsController < ApplicationController
 
   def ensure_current_user
     item = Item.find(params[:id])
-    redirect_to action: :index if item.user_id != current_user.id
+    if item.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 end
