@@ -9,7 +9,8 @@ class OrderAddress
     validates :prefecture_id,    numericality: { other_than: 1, message: 'is invalid' }
     validates :city
     validates :house_number
-    validates :phone_number,     numericality: { only_integer: true, with: /\A\d{11}\z/ }
+    validates :phone_number,     numericality: { only_integer: true },
+                                 format: { with: /\A\d{10,11}\z/ }
   end
 
   def save
