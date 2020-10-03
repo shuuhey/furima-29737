@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :orders
-  
+
   with_options presence: true do
     @zenkaku = /\A[ぁ-んァ-ン一-龥]/
     @kana    = /\A[ァ-ヶー－]+\z/
