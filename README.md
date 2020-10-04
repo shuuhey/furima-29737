@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -42,7 +42,7 @@
 - belongs_to_active_hash :preparation
 - belongs_to_active_hash :prefecture
 
-## order テーブル
+## orders テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -53,14 +53,14 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one    :shipping_address
+- has_one    :address
 
-## shipping_addresses テーブル
+## addresses テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| order      | references | null: false, foreign_key: true |
-| post_code     | string     | null: false                    |
+| order         | references | null: false, foreign_key: true |
+| postal_code   | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
