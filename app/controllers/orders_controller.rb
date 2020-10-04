@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :move_to_index
 
   def index
-    @order = Order.new
+    @orderaddress = OrderAddress.new
   end
 
   def create
